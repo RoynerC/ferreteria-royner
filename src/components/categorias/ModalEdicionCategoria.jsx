@@ -1,17 +1,19 @@
 import React from "react";
 import { Modal, Form, Button } from "react-bootstrap";
 
-const ModalRegistroCategoria = ({
-  mostrarModal,
-  setMostrarModal,
-  nuevaCategoria,
-  manejoCambioInput,
-  agregarCategoria,
+const ModalEdicionCategoria = ({
+  mostrarModalEditar,
+  setMostrarModalEditar,
+  categoriaEditada,
+  manejoCambioInputEditar,
+  editarCategoria,
 }) => {
+  if (!categoriaEditada) return null;
+
   return (
-    <Modal show={mostrarModal} onHide={() => setMostrarModal(false)}>
+    <Modal show={mostrarModalEditar} onHide={() => setMostrarModalEditar(false)}>
       <Modal.Header closeButton>
-        <Modal.Title>Agregar Categoria</Modal.Title>
+        <Modal.Title>Editar categoría</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
@@ -20,36 +22,35 @@ const ModalRegistroCategoria = ({
             <Form.Control
               type="text"
               name="nombre"
-              value={nuevaCategoria.nombre}
-
-              onChange={manejoCambioInput}
+              value={categoriaEditada.nombre}
+              onChange={manejoCambioInputEditar}
               placeholder="Ingresa el nombre"
             />
           </Form.Group>
+
           <Form.Group className="mb-3">
             <Form.Label>Descripción</Form.Label>
             <Form.Control
               as="textarea"
               rows={3}
               name="descripcion"
-              value={nuevaCategoria.descripcion}
-    
-         onChange={manejoCambioInput}
-            placeholder="Ingresa la descripción"
+              value={categoriaEditada.descripcion}
+              onChange={manejoCambioInputEditar}
+              placeholder="Ingresa la descripción"
             />
           </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={() => setMostrarModal(false)}>
+        <Button variant="secondary" onClick={() => setMostrarModalEditar(false)}>
           Cancelar
         </Button>
-        <Button variant="primary" onClick={agregarCategoria}>
-          Guardar
+        <Button variant="primary" onClick={editarCategoria}>
+          Actualizar
         </Button>
       </Modal.Footer>
     </Modal>
   );
 };
 
-export default ModalRegistroCategoria;
+export default ModalEdicionCategoria;
