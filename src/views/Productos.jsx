@@ -1,5 +1,3 @@
-//Productos
-
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { db } from "../database/firebaseconfig";
@@ -26,7 +24,7 @@ const Productos = () => {
     precio: null,
     stock: null,
     categoria: "",
-    imagen:""
+    imagen: ""
   });
 
   const [mostrarModalEliminar, setMostrarModalEliminar] = useState(false);
@@ -59,7 +57,7 @@ const Productos = () => {
       !productoEditado?.precio ||
       !productoEditado?.stock ||
       !productoEditado?.categoria
-) {
+    ) {
       alert("Por favor, completa todos los campos antes de actualizar.");
       return;
     }
@@ -81,8 +79,7 @@ const Productos = () => {
       console.error("Error al actualizar el producto:", error);
       alert("Error al actualizar el producto: " + error.message);
     }
-  };
-
+  }
 
   // Manejador de cambios en inputs del formulario de nuevo producto
   const manejoCambioInput = (e) => {
@@ -126,8 +123,7 @@ const Productos = () => {
       console.error("Error al agregar el producto:", error);
       alert("Error al agregar el producto: " + error.message);
     }
-  };
-
+  }
 
   const cargarProductos = async () => {
     try {
@@ -222,12 +218,14 @@ const Productos = () => {
           />
         </Col>
       </Row>
+
       <TablaProductos
         productos={productosFiltrados}
         categorias={categorias}
         manejarEliminar={manejarEliminar}
         manejarEditar={manejarEditar}
       />
+
       <ModalRegistroProducto
         mostrarModal={mostrarModal}
         setMostrarModal={setMostrarModal}
@@ -236,12 +234,14 @@ const Productos = () => {
         agregarProducto={agregarProducto}
         categorias={categorias}
       />
+
       <ModalEliminacionProducto
         mostrarModalEliminar={mostrarModalEliminar}
         setMostrarModalEliminar={setMostrarModalEliminar}
         productoAEliminar={productoAEliminar}
         eliminarProducto={eliminarProducto}
       />
+
       <ModalEdicionProducto
         mostrarModalEditar={mostrarModalEditar}
         setMostrarModalEditar={setMostrarModalEditar}
