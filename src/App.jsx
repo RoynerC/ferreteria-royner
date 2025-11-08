@@ -9,6 +9,7 @@ import Productos from "./views/Productos";
 import Catalogo from "./views/Catalogo";
 //Importar archivo de estilos.
 import "./App.css";
+import Estadisticas from "./views/Estadisticas.jsx";
 const App = () => {
   return (
     <Router>
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/categorias" element={<Categorias />} />
           <Route path="/productos" element={<Productos />} />
           <Route path="/catalogo" element={<Catalogo />} />
+          <Route path="/estadisticas" element={<Estadisticas />} />
           <Route path="*" element={<h2>404 - Página no encontrada</h2>} />
         </Routes>
       </main>
